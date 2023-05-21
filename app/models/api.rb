@@ -34,7 +34,7 @@ class Api
 
     # Subscribe to the RTPPM topic and process messages
 
-    client.subscribe("/topic/TRAIN_MVT_ALL_TOC", { 'id' => client.uuid(), 'ack' => 'client', 'activemq.subscriptionName' => Socket.gethostname + '-RTPPM' }) do |msg|
+    client.subscribe("/topic/TD_WCS_SIG_AREA", { 'id' => client.uuid(), 'ack' => 'client', 'activemq.subscriptionName' => Socket.gethostname + '-RTPPM' }) do |msg|
 
       ap JSON.parse(msg.body)
       client.acknowledge(msg, msg.headers)

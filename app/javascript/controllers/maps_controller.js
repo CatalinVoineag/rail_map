@@ -7,12 +7,14 @@ export default class extends Controller {
   static targets = ["container"]
 
   connect() {
-  }
-
-  show(event) {
-    event.preventDefault()
-    //var map = L.map(this.containerTarget).setView([50.301, 18.654], 13);
     var map = L.map(this.containerTarget, {});
+    var marker = L.icon({
+        iconUrl: 'assets/marker-icon.png',
+        iconSize: [38, 95],
+        iconAnchor: [22, 94],
+        popupAnchor: [-3, -76]
+    });
+
     map.setView([51.52238797921441, -0.08366235665359283], 18);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -21,13 +23,8 @@ export default class extends Controller {
               maxZoom: 18,
     }).addTo(map);
 
-      setTimeout(() => {
-        console.log("here")
-        map.invalidateSize();
-      }, 1000);
+    var marker = L.marker([51.5401141, 0.0788168], {icon: marker}).addTo(map);
+
   }
 
-  //disconnect() {
-  //  this.map.remove();
-  //}
 }
